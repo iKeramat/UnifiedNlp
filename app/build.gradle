@@ -41,6 +41,8 @@ android {
         versionCode(20000 + getMyVersionCode())
         minSdkVersion Math.max(androidMinSdk, 14)
         targetSdkVersion androidTargetSdk
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     sourceSets {
@@ -94,7 +96,7 @@ dependencies {
 
     // AndroidX UI
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
-    implementation "androidx.preference:preference:$preferenceVersion"
+    implementation "androidx.preference:preference-ktx:$preferenceVersion"
     implementation "androidx.lifecycle:lifecycle-service:$lifecycleVersion"
 
     // Navigation
@@ -102,6 +104,12 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "junit:junit:$junitVersion"
 }
 
 afterEvaluate {
