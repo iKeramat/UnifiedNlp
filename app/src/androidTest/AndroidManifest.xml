@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.microg.nlp.test">
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:targetPackage="org.microg.nlp.app"
+        android:targetProcesses="org.microg.nlp:ui">
+        <meta-data
+            android:name="remoteMethod"
+            android:value="androidx.test.espresso.remote.EspressoRemote#remoteInit"
+            />
+    </instrumentation>
+</manifest>

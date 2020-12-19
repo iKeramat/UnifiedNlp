@@ -13,6 +13,9 @@ buildscript {
     ext.navigationVersion = '2.3.5'
     ext.preferenceVersion = '1.1.1'
     ext.recyclerviewVersion = '1.2.0'
+    ext.junitVersion = '4.12'
+    ext.espressoVersion = '3.3.0'
+    ext.androidxJunitVersion = '1.1.2'
 
     ext.androidBuildGradleVersion = '7.0.4'
 
