@@ -56,18 +56,22 @@ android {
             applicationId = 'com.google.android.gms'
             minSdkVersion 19
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
         LegacyNetworkLocation {
             applicationId = 'com.google.android.location'
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
         UnifiedNlp {
             applicationId = 'org.microg.nlp'
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
         LMOUnifiedNlp {
             applicationId = 'com.libremobileos.unifiednlp'
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
     }
 
@@ -118,6 +122,7 @@ dependencies {
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-remote:$espressoVersion"
 
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "junit:junit:$junitVersion"
