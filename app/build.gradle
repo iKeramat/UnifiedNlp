@@ -83,10 +83,6 @@ android {
     }
 }
 
-//processUnifiedNlpDebugAndroidTestManifest {
-//    applicationId "düdüm"
-//}
-
 apply from: "../gradle/androidJars.gradle"
 
 dependencies {
