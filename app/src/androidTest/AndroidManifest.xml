@@ -2,19 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="org.microg.nlp.test">
-    <application>
-    <activity
-        android:name="org.microg.nlp.app.SettingsActivityTest$DummyActivity" />
-    </application>
 
     <instrumentation
         android:name="androidx.test.runner.AndroidJUnitRunner"
         android:targetPackage="will be handled by gradle"
         android:targetProcesses="${androidTestTargetProcesses}:ui">
-<!--        android:targetProcesses="com.google.android.gms:ui,org.microg.nlp:ui" >-->
-<!--        android:targetProcesses="*"> &lt;!&ndash; not working, starts the remote espresso if enabled, but activity is always black &ndash;&gt;-->
-<!--        android:targetProcesses="org.microg.nlp:ui"> &lt;!&ndash; working with or without remote espresso&ndash;&gt;-->
-<!--        android:targetProcesses="org.microg.nlp.app"> &lt;!&ndash; not working, nor ".nlp, nlp.app:ui, nlp.test, nlp.test:ui", starts the remote espresso if enabled, activity is shown&ndash;&gt;-->
+        <!-- the instrumentation test runs as the first process in this list.
+        The activities are started in the :ui process (defined in Manifest).
+        If the instrumentation test does not run in the same process, it will lost the track of
+        the newly started activity and fail. Remote espresso seems not to be working for this
+        case or I don't understand remote espresso.
+        Maybe this is a bug, but as a workaround we have to substitute the
+        target process for every buildVariant. -->
 
         <meta-data
             android:name="remoteMethod"
