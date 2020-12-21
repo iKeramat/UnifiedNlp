@@ -55,14 +55,17 @@ android {
             applicationId = 'com.google.android.gms'
             minSdkVersion 19
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
         LegacyNetworkLocation {
             applicationId = 'com.google.android.location'
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
         UnifiedNlp {
             applicationId = 'org.microg.nlp'
             dimension 'default'
+            manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
     }
 
@@ -79,6 +82,10 @@ android {
         warning "MissingTranslation"
     }
 }
+
+//processUnifiedNlpDebugAndroidTestManifest {
+//    applicationId "düdüm"
+//}
 
 apply from: "../gradle/androidJars.gradle"
 
@@ -107,6 +114,7 @@ dependencies {
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-remote:$espressoVersion"
 
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "junit:junit:$junitVersion"

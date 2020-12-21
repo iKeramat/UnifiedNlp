@@ -2,11 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="org.microg.nlp.test">
+    <application>
+    <activity
+        android:name="org.microg.nlp.app.SettingsActivityTest$DummyActivity" />
+    </application>
 
     <instrumentation
         android:name="androidx.test.runner.AndroidJUnitRunner"
-        android:targetPackage="org.microg.nlp.app"
-        android:targetProcesses="org.microg.nlp:ui">
+        android:targetPackage="will be handled by gradle"
+        android:targetProcesses="${androidTestTargetProcesses}:ui">
+<!--        android:targetProcesses="com.google.android.gms:ui,org.microg.nlp:ui" >-->
+<!--        android:targetProcesses="*"> &lt;!&ndash; not working, starts the remote espresso if enabled, but activity is always black &ndash;&gt;-->
+<!--        android:targetProcesses="org.microg.nlp:ui"> &lt;!&ndash; working with or without remote espresso&ndash;&gt;-->
+<!--        android:targetProcesses="org.microg.nlp.app"> &lt;!&ndash; not working, nor ".nlp, nlp.app:ui, nlp.test, nlp.test:ui", starts the remote espresso if enabled, activity is shown&ndash;&gt;-->
+
         <meta-data
             android:name="remoteMethod"
             android:value="androidx.test.espresso.remote.EspressoRemote#remoteInit"
