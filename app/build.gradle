@@ -87,6 +87,10 @@ android {
     }
 }
 
+apply from: '../gradle/publish.gradle'
+
+description = 'UnifiedNlp standalone application'
+
 dependencies {
     implementation project(':api')
     implementation project(':geocode-v1')
