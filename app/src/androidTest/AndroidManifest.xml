@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.microg.nlp.test">
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:targetPackage="will be handled by gradle"
+        android:targetProcesses="${androidTestTargetProcesses}:ui">
+        <!-- the instrumentation test runs as the first process in this list.
+        The activities are started in the :ui process (defined in Manifest).
+        If the instrumentation test does not run in the same process, it will lost the track of
+        the newly started activity and fail. Remote espresso seems not to be working for this
+        case or I don't understand remote espresso.
+        Maybe this is a bug, but as a workaround we have to substitute the
+        target process for every buildVariant. -->
+
+        <meta-data
+            android:name="remoteMethod"
+            android:value="androidx.test.espresso.remote.EspressoRemote#remoteInit"
+            />
+    </instrumentation>
+</manifest>
