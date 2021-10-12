@@ -18,6 +18,7 @@
 			android:name=".SampleBackendService"
 			android:exported="true"
 			android:permission="android.permission.ACCESS_COARSE_LOCATION"
+			android:permission="android.permission.ACCESS_BACKGROUND_LOCATION"
 			android:label="NLPV2-Sample">
 			<intent-filter>
 				<action android:name="org.microg.nlp.LOCATION_BACKEND" />
@@ -28,6 +29,7 @@
 			android:name=".SecondSampleService"
 			android:exported="true"
 			android:permission="android.permission.ACCESS_COARSE_LOCATION"
+			android:permission="android.permission.ACCESS_BACKGROUND_LOCATION"
 			android:label="NLPV2-Second">
 			<intent-filter>
 				<action android:name="org.microg.nlp.LOCATION_BACKEND" />
@@ -46,6 +48,7 @@
 			android:name=".ThirdSampleService"
 			android:exported="true"
 			android:permission="android.permission.ACCESS_COARSE_LOCATION"
+			android:permission="android.permission.ACCESS_BACKGROUND_LOCATION"
 			android:label="NLPV2-Random">
 			<intent-filter>
 				<action android:name="org.microg.nlp.LOCATION_BACKEND" />
