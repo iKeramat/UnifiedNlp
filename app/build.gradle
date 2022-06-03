@@ -47,6 +47,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/main/java'
     }
 
     flavorDimensions 'default'
@@ -67,6 +68,10 @@ android {
             dimension 'default'
             manifestPlaceholders = [androidTestTargetProcesses: applicationId]
         }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.resValue 'string', 'application_id', variant.applicationId
     }
 
     compileOptions {
@@ -116,10 +121,4 @@ dependencies {
 
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "junit:junit:$junitVersion"
-}
-
-afterEvaluate {
-    android.applicationVariants.all { variant ->
-        variant.resValue 'string', 'application_id', variant.applicationId
-    }
 }
