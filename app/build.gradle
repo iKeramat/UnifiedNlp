@@ -47,6 +47,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/main/java'
     }
 
     flavorDimensions 'default'
@@ -69,6 +70,10 @@ android {
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.resValue 'string', 'application_id', variant.applicationId
+    }
+
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -82,8 +87,6 @@ android {
         warning "MissingTranslation"
     }
 }
-
-apply from: '../gradle/publish.gradle'
 
 description = 'UnifiedNlp standalone application'
 
@@ -116,10 +119,4 @@ dependencies {
 
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "junit:junit:$junitVersion"
-}
-
-afterEvaluate {
-    android.applicationVariants.all { variant ->
-        variant.resValue 'string', 'application_id', variant.applicationId
-    }
 }
