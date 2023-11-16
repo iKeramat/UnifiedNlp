@@ -119,3 +119,4 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "junit:junit:$junitVersion"
 }
+
