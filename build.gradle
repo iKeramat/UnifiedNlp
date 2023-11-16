@@ -17,13 +17,13 @@ buildscript {
     ext.espressoVersion = '3.3.0'
     ext.androidxJunitVersion = '1.1.2'
 
-    ext.androidBuildGradleVersion = '3.6.3'
+    ext.androidBuildGradleVersion = '4.2.2'
 
-    ext.androidBuildVersionTools = '29.0.3'
+    ext.androidBuildVersionTools = '30.0.2'
 
     ext.androidMinSdk = 14
-    ext.androidTargetSdk = 29
-    ext.androidCompileSdk = 29
+    ext.androidTargetSdk = 30
+    ext.androidCompileSdk = 30
 
     repositories {
         jcenter()
