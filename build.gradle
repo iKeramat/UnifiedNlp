@@ -4,7 +4,7 @@
  */
 
 buildscript {
-    ext.kotlinVersion = '1.6.10'
+    ext.kotlinVersion = '1.7.0'
     ext.coroutineVersion = '1.5.2'
 
     ext.appcompatVersion = '1.4.0'
