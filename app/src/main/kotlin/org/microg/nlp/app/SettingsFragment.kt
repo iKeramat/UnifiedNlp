@@ -9,8 +9,7 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
-import org.microg.nlp.client.LocationClient
-import org.microg.nlp.client.GeocodeClient
+import org.microg.nlp.client.UnifiedLocationClient
 import org.microg.nlp.app.tools.ui.ResourceSettingsFragment
 import org.microg.nlp.ui.navigate
 
@@ -36,7 +35,7 @@ class SettingsFragment : ResourceSettingsFragment() {
     }
 
     private suspend fun updateDetails() {
-        val backendCount = LocationClient(requireContext(), lifecycle).getLocationBackends().size + GeocodeClient(requireContext(), lifecycle).getGeocodeBackends().size
+        val backendCount = UnifiedLocationClient[requireContext()].getLocationBackends().size + UnifiedLocationClient[requireContext()].getGeocoderBackends().size
         findPreference<Preference>(PREF_UNIFIEDNLP)!!.summary = resources.getQuantityString(R.plurals.pref_unifiednlp_summary, backendCount, backendCount);
     }
 

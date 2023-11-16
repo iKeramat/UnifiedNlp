@@ -23,19 +23,19 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.lifecycle.LifecycleOwner;
-
 import org.microg.nlp.app.R;
-import org.microg.nlp.client.LocationClient;
+import org.microg.nlp.client.UnifiedLocationClient;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.content.Context.LOCATION_SERVICE;
 import static android.location.LocationManager.NETWORK_PROVIDER;
 import static org.microg.nlp.api.Constants.LOCATION_EXTRA_BACKEND_COMPONENT;
-import org.microg.nlp.app.tools.selfcheck.SelfCheckGroup.Result;
+import static org.microg.nlp.app.tools.selfcheck.SelfCheckGroup.Result.Negative;
+import static org.microg.nlp.app.tools.selfcheck.SelfCheckGroup.Result.Positive;
+import static org.microg.nlp.app.tools.selfcheck.SelfCheckGroup.Result.Unknown;
 
-public class NlpStatusChecks implements org.microg.nlp.app.tools.selfcheck.SelfCheckGroup {
+public class NlpStatusChecks implements SelfCheckGroup {
     @Override
     public String getGroupName(Context context) {
         return context.getString(R.string.self_check_cat_nlp_status);
@@ -50,21 +50,17 @@ public class NlpStatusChecks implements org.microg.nlp.app.tools.selfcheck.SelfC
         }
     }
 
-    private LocationClient getLocationClient(Context context) {
-        return new LocationClient(context, ((LifecycleOwner) context).getLifecycle());
-    }
-
     private boolean providerWasBound(Context context, ResultCollector collector) {
         collector.addResult(context.getString(R.string.self_check_name_nlp_bound),
-                getLocationClient(context).isAvailable() ? Result.Positive : Result.Negative, context.getString(R.string.self_check_resolution_nlp_bound));
-        return getLocationClient(context).isAvailable();
+                UnifiedLocationClient.get(context).isAvailable() ? Positive : Negative, context.getString(R.string.self_check_resolution_nlp_bound));
+        return UnifiedLocationClient.get(context).isAvailable();
     }
 
     private boolean isNetworkLocationEnabled(Context context, ResultCollector collector) {
         LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
         boolean networkEnabled = locationManager.getProviders(true).contains(NETWORK_PROVIDER);
         collector.addResult(context.getString(R.string.self_check_name_network_enabled),
-                networkEnabled ? Result.Positive : Result.Negative, context.getString(R.string.self_check_resolution_network_enabled));
+                networkEnabled ? Positive : Negative, context.getString(R.string.self_check_resolution_network_enabled));
         return networkEnabled;
     }
 
@@ -75,10 +71,10 @@ public class NlpStatusChecks implements org.microg.nlp.app.tools.selfcheck.SelfC
             boolean hasKnown = location != null && location.getExtras() != null &&
                     location.getExtras().containsKey(LOCATION_EXTRA_BACKEND_COMPONENT);
             collector.addResult(context.getString(R.string.self_check_name_last_location),
-                    hasKnown ? Result.Positive : Result.Unknown, context.getString(R.string.self_check_resolution_last_location));
+                    hasKnown ? Positive : Unknown, context.getString(R.string.self_check_resolution_last_location));
             return hasKnown;
         } catch (SecurityException e) {
-            collector.addResult(context.getString(R.string.self_check_name_last_location), Result.Unknown, context.getString(R.string.self_check_loc_perm_missing));
+            collector.addResult(context.getString(R.string.self_check_name_last_location), Unknown, context.getString(R.string.self_check_loc_perm_missing));
             return false;
         }
     }
@@ -95,7 +91,7 @@ public class NlpStatusChecks implements org.microg.nlp.app.tools.selfcheck.SelfC
                     } catch (InterruptedException e) {
                     }
                     collector.addResult(context.getString(R.string.self_check_name_nlp_is_providing),
-                            result.get() ? Result.Positive : Result.Unknown, context.getString(R.string.self_check_resolution_nlp_is_providing));
+                            result.get() ? Positive : Unknown, context.getString(R.string.self_check_resolution_nlp_is_providing));
                 }
             }
         }).start();
@@ -123,7 +119,7 @@ public class NlpStatusChecks implements org.microg.nlp.app.tools.selfcheck.SelfC
                 }
             }, null);
         } catch (SecurityException e) {
-            collector.addResult(context.getString(R.string.self_check_name_last_location), Result.Unknown, context.getString(R.string.self_check_loc_perm_missing));
+            collector.addResult(context.getString(R.string.self_check_name_last_location), Unknown, context.getString(R.string.self_check_loc_perm_missing));
         }
     }
 }
