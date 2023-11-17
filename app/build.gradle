@@ -63,6 +63,10 @@ android {
             applicationId = 'org.microg.nlp'
             dimension 'default'
         }
+        LMOUnifiedNlp {
+            applicationId = 'com.libremobileos.unifiednlp'
+            dimension 'default'
+        }
     }
 
     android.applicationVariants.all { variant ->
