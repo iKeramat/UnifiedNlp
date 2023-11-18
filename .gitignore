@@ -11,3 +11,5 @@ local.properties
 .idea/
 BuildConfig.java
 app/UnifiedNlp/
+keystore.properties
+*.jks
