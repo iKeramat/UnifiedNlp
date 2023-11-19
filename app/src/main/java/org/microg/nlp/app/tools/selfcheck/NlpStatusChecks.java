@@ -50,11 +50,11 @@ public class NlpStatusChecks implements SelfCheckGroup {
         }
     }
 
-//    private boolean providerWasBound(Context context, ResultCollector collector) {
-//        collector.addResult(context.getString(R.string.self_check_name_nlp_bound),
-//                UnifiedLocationClient.get(context).isAvailable() ? Positive : Negative, context.getString(R.string.self_check_resolution_nlp_bound));
-//        return UnifiedLocationClient.get(context).isAvailable();
-//    }
+    private boolean providerWasBound(Context context, ResultCollector collector) {
+        collector.addResult(context.getString(R.string.self_check_name_nlp_bound),
+                UnifiedLocationClient.get(context).isAvailable() ? Positive : Negative, context.getString(R.string.self_check_resolution_nlp_bound));
+        return UnifiedLocationClient.get(context).isAvailable();
+    }
 
     private boolean isNetworkLocationEnabled(Context context, ResultCollector collector) {
         LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);

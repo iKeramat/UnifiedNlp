@@ -546,6 +546,14 @@ class UnifiedLocationClient(private val context: Context, private val lifecycle:
         const val KEY_FORCE_NEXT_UPDATE = "org.microg.nlp.FORCE_NEXT_UPDATE"
         const val KEY_OP_PACKAGE_NAME = "org.microg.nlp.OP_PACKAGE_NAME"
         private val TAG = "ULocClient"
+        private var client: UnifiedLocationClient? = null
+
+        @JvmStatic
+        @Synchronized
+        operator fun get(context: Context): UnifiedLocationClient? {
+            var client = client
+            return null
+        }
     }
 }
 
