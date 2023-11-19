@@ -78,8 +78,6 @@ android {
     }
 }
 
-apply from: "../gradle/androidJars.gradle"
-
 dependencies {
     implementation project(':api')
     implementation project(':geocode-v1')
