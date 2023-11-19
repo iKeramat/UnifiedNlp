@@ -43,7 +43,7 @@ public class NlpStatusChecks implements SelfCheckGroup {
 
     @Override
     public void doChecks(Context context, ResultCollector collector) {
-//        providerWasBound(context, collector);
+        providerWasBound(context, collector);
         if (isNetworkLocationEnabled(context, collector)) {
             isProvidingLastLocation(context, collector);
             isProvidingLocation(context, collector);
