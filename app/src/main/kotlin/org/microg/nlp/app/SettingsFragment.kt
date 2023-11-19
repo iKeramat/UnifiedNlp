@@ -35,7 +35,7 @@ class SettingsFragment : ResourceSettingsFragment() {
     }
 
     private suspend fun updateDetails() {
-        val backendCount = UnifiedLocationClient[requireContext()].getLocationBackends().size + UnifiedLocationClient[requireContext()].getGeocoderBackends().size
+        val backendCount = UnifiedLocationClient(requireContext(), viewLifecycleOwner.lifecycle).getLocationBackends().size + UnifiedLocationClient(requireContext(), viewLifecycleOwner.lifecycle).getGeocoderBackends().size
         findPreference<Preference>(PREF_UNIFIEDNLP)!!.summary = resources.getQuantityString(R.plurals.pref_unifiednlp_summary, backendCount, backendCount);
     }
 
