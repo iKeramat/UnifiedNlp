@@ -90,6 +90,7 @@ class BackendListFragment : Fragment(R.layout.backend_list), BackendListEntryCal
         return backends.toTypedArray()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         handleActivityResult(requestCode, resultCode, data)
     }
