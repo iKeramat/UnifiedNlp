@@ -26,7 +26,6 @@
 
     <string name="self_check_cat_nlp_status">Стање Обједињеног МПЛ-а</string>
     <string name="self_check_name_nlp_bound">Обједињени МПЛ је регистрован у систему:</string>
-    <string name="self_check_resolution_nlp_bound">Систем се није повезао са услугом Обједињеног МПЛ-а. Ако сте инсталирали Обједињени МПЛ покушајте са рестартом уређаја.</string>
     <string name="self_check_name_last_location">Обједињени МПЛ има познату локацију:</string>
     <string name="self_check_resolution_last_location">Обједињени МПЛ нема последњу познату локацију. Неке апликације ће краховати због овога.</string>
     <string name="self_check_name_nlp_is_providing">Обједињени МПЛ пружа освежавања локације:</string>
